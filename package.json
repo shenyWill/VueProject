@@ -1,0 +1,14 @@
+{
+  "name": "vue",
+  "version": "1.0.0",
+  "description": "vue实例",
+  "main": "index.js",
+  "directories": {
+    "example": "example"
+  },
+  "scripts": {
+    "test": "test.js"
+  },
+  "author": "yuanwill",
+  "license": "ISC"
+}
