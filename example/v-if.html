@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HelloWorld</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>v-if & v-else & v-show</h1>
+    <hr>
+    <div id="app">
+        <!-- v-if和v-show的区别：v-if如果为false不会加载，v-show只是改变css的display:none -->
+        <p v-if="isLogin">您好，yuanwill</p>
+        <p v-else>您还没有登录，请登录</p>
+        <p v-show="isPass">已经通过！</p>
+    </div>
+
+    <script type="text/javascript">
+        var app = new Vue({
+            el : '#app',
+            data : {
+                isLogin: true,
+                isPass: true
+            }
+        })
+    </script>
+</body>
+</html>
