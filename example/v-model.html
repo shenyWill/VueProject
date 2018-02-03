@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HelloWorld</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>v-model 实例</h1>
+    <hr>
+    <div id="app">
+        <p>展示信息：{{message}}</p>
+
+        <hr>
+        <h3>文本框</h3>
+        初始文本框：<input type="text" v-model="message">
+        <br>
+        lazy文本框：<input type="text" v-model.lazy="message">
+        <br>
+        number文本框：<input type="text" v-model.number="message">
+        <br>
+        trim文本框：<input type="text" v-model.trim="message">
+
+        <hr>    
+        <h3>文本区域</h3>
+        <textarea cols="30" rows="10" v-model="message"></textarea>
+
+        <hr>
+        <h3>单选按钮</h3>
+        <!-- 因为v-model绑定的都是sex，所以此时name可以不需要 设置id与label的for值一样，可以点击文字选中-->
+        <input type="radio" value="男" name="sex" v-model="sex" id="man">
+        <label for="man">男</label>
+        <input type="radio" value="女" name="sex" v-model="sex" id="woman">
+        <label for="woman">女</label>   
+        <br>
+        <p>你选择的性别：{{sex}}</p>    
+        
+        <hr>
+        <h4>多选按钮绑定一个值</h4>
+        <input type="checkbox" v-model="checkTrue" id="trueOrFalse" value="aa">
+        <label for="trueOrFalse">{{checkTrue}}</label>
+
+        <hr>
+        <h4>多选按钮绑定多个值</h4>
+        <input type="checkbox" v-model="checkArr" value="yuan" id="yuanId">
+        <label for="yuanId">yuan</label>
+        <input type="checkbox" v-model="checkArr" value="will" id="willId">
+        <label for="willId">will</label>
+        <input type="checkbox" v-model="checkArr" value="shen" id="shenId">
+        <label for="shenId">shen</label>
+        <p>被选中的值：{{checkArr}}</p>
+    </div>
+
+    <script type="text/javascript">
+        var app = new Vue({
+            el : '#app',
+            data : {
+                message : 'helloWorld',
+                sex:'',
+                checkTrue:'',
+                checkArr:[]
+            }
+        })
+    </script>
+</body>
+</html>
