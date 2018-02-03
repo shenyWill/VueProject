@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>v-bind 实例</title>
+    <script src="../assets/js/vue.js"></script>
+    <style>
+        .classA {
+            color: red;
+        }
+        .classB {
+            font-size: 150%;
+        }
+    </style>
+</head>
+<body>
+    <h1>v-bind 实例</h1>
+    <hr>
+    <div id="app">
+        <h3>v-bind基础实例</h3>
+        <img v-bind:src="imgSrc" alt="">
+        <br>
+        <a :href="githubSrc" target="_black">我的github</a>
+
+        <hr>
+        <h3>直接绑定class</h3>
+        <div :class="classAA">直接绑定class</div>
+
+        <hr>
+        <h3>绑定classA并进行判断，在isOK为true时显示样式，在isOk为false时不显示样式。</h3>
+        <div :class="{classA:isShow}">判断是否需要classA</div>
+        <input type="checkbox" v-model="isShow" id="will">
+        <label for="will">{{isShow}}</label>
+
+        <hr>
+        <h3>绑定class中的数组</h3>
+        <div :class="[classAA,classBB]">绑定class中的classA和classB</div>
+
+        <hr>
+        <h3>绑定class中使用三元表达式判断</h3>
+        <div :class="isShow?classAA:classBB">三元运算符绑定类</div>
+
+        <hr>
+        <h3>绑定style</h3>
+        <div :style="{color:classBlue,fontSize:fontSize}">绑定style</div>
+
+        <hr>
+        <h3>用类绑定style样式</h3>
+        <div :style="styleObject">绑定style的类样式</div>
+    </div>
+
+    <script type="text/javascript">
+        var app = new Vue({
+            el : '#app',
+            data : {
+                imgSrc:"http://jspang.com/wp-content/uploads/2018/01/mongodb_index.jpg",
+                githubSrc:"https://github.com/shenyWill",
+                classAA:'classA',
+                classBB:'classB',
+                isShow:false,
+                classBlue:'blue',
+                fontSize:'22px',
+                styleObject:{
+                    color:'green',
+                    fontSize:'33px'//不能使用font-size
+                }
+            }
+        })
+    </script>
+</body>
+</html>
