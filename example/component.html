@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>component-1 自定义全局组件和局部组件</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>component-1 自定义全局组件和局部组件</h1>
+    <hr>
+    <div id="app">
+        <will></will>
+        <yuan></yuan>
+    </div>
+    <div id="ppa">
+        <will></will>
+    </div>
+    <script type="text/javascript">
+
+        /* 自定义全局组件 */
+        Vue.component('will',{
+            template:`<h3 style="color:red">我是自定义的全局组件</h3>`
+        })
+
+        var app = new Vue({
+            el: '#app',
+            data: {
+                message : 'helloWorld'
+            },
+            /* 自定义局部组件 */
+            components:{
+                'yuan':{
+                    template:`<h3 style="color:green">我是自定义的局部组件</h3>`
+                }
+            }
+        });
+
+        var ppa = new Vue({
+            el: '#ppa'
+        })
+    </script>
+</body>
+</html>

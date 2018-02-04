@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>template模板</title>
+    <script src="../assets/js/vue.js"></script>
+
+    <template id="dd2">
+        <h3 style="color:red">我是模板方式二</h3>
+    </template>
+
+    <script type="x-template" id="dd3">
+        <h3 style="color:red">我是模板方式三</h3>
+    </script>
+</head>
+<body>
+    <h1>template模板</h1>
+    <hr>
+    <div id="app">{{message}}</div>
+
+    <script type="text/javascript">
+        var app = new Vue({
+            el : '#app',
+            data : {
+                message : 'helloWorld'
+            },
+            /* 第一种模板方式 */
+            // template:`
+            //     <h3 style="color:red">我是模板方式一</h3>
+            // `
+
+            /* 第二种模板方式 */
+            // template:'#dd2'
+
+            /* 第三种模板方式 */
+            template:'#dd3'
+        })
+    </script>
+</body>
+</html>
