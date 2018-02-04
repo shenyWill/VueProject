@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HelloWorld</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>Hello World</h1>
+    <hr>
+    <div id="app">
+        <p>{{num}}</p>
+        <ul><li v-for="item in arr">{{item}}</li></ul>
+        <button onclick="add()">改变</button>
+    </div>
+
+    <script type="text/javascript">
+    function add() {
+        // dataObj.num++;//第一种方式
+        // app.num++;//第二种方式
+        // Vue.set(app,'num',2);//第三种方式，把num的值变为2
+
+        /*由于js的限制，所以如果只是改变数组的值，则第一种和第二种方式无效，请看下面*/
+        dataObj.arr[1] = 'ddd'; //这样是无效的
+        Vue.set(app.arr,1,'ddd')
+    }
+    var dataObj = {
+        num:1,
+        arr:['aaa','bbb','ccc']
+    }
+        var app = new Vue({
+            el: '#app',
+            data: dataObj
+        })
+    </script>
+</body>
+</html>
