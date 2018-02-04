@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>component-2 组件的props属性</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>component-2 组件的props属性</h1>
+    <hr>
+    <div id="app">
+        <!--可以使用v-bind:name去绑定vue内的data数据，简写:name-->
+        <will here="China" my-age="18" :name="myName"></will>
+        <yuan color="green" :font="font"></yuan>
+    </div>
+    <div id="ppa">
+        <will></will>
+    </div>
+    <script type="text/javascript">
+        /*全局组件的props和局部组件的props是一样的方式*/
+        /* 全局组件的props */
+        Vue.component('will',{
+            template:`<h3 style="color:red">我来自{{here}},我的年龄：{{myAge}},我的名字：{{name}}</h3>`,
+            props:['here','myAge','name'] //如果用-,则改成驼峰式，因为vue不支持-
+        })
+
+        var app = new Vue({
+            el: '#app',
+            data: {
+                message: 'helloWorld',
+                myName: 'shenyuan',
+                font:'26px'
+            },
+            /* 局部组件的props */
+            components:{
+                'yuan':{
+                    template:`<h3 :style="{color:color,fontSize:font}">我的颜色是{{color}},我的字体大小是{{font}}</h3>`,
+                    props:['color','font']
+                }
+            }
+        });
+
+        var ppa = new Vue({
+            el: '#ppa'
+        })
+    </script>
+</body>
+</html>
