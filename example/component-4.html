@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>component标签</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>component标签</h1>
+    <hr>
+    <div id="app">
+        <component v-bind:is="change"></component>
+        <br>
+        <button @click="chengeComponent">change</button>
+    </div>
+
+    <script type="text/javascript">
+        var componentA = {
+            template: `<p style="color:red">我是componentA</p>`
+        }
+        var componentB = {
+            template: `<p style="color:green">我是componentB</p>`
+        }
+        var componentC = {
+            template: `<p style="color:blue">我是componentC</p>`
+        }
+        var app = new Vue({
+            el: '#app',
+            data: {
+                change : 'componenta'
+            },
+            components:{
+                'componenta':componentA,//组件不要取驼峰式命名，否则报错
+                'componentb':componentB,
+                'componentc':componentC
+            },
+            methods:{
+                chengeComponent:function() {
+                    if(this.change == 'componenta') {
+                        this.change = 'componentb'
+                    }else if(this.change == 'componentb') {
+                        this.change = 'componentc'
+                    }else {
+                        this.change = 'componenta'
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>component父子组件</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>component父子组件</h1>
+    <hr>
+    <div id="app">
+        <country :color="countryColor" :data-add="address"> </country>
+    </div>
+
+    <script type="text/javascript">
+    
+        var peopleComponent = {
+            template:`<p>我是{{from}}人</p>`,
+            props:['from']
+        }
+
+        var countryComponent = {
+            // 必须设置根元素 否则报错
+            template:`
+                <div>
+                    <p :style="{color:color}">我来自{{dataAdd}}</p>
+                    <people from="China"></people>
+                </div>
+            `,
+            props:['color','dataAdd'],
+            components:{
+                'people':peopleComponent
+            }
+
+        }
+
+        Vue.component('country',countryComponent);
+
+        var app = new Vue({
+            el: '#app',
+            data: {
+                countryColor:'red',
+                address:'中国'
+            }
+        })
+    </script>
+</body>
+</html>
