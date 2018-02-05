@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>propsData 扩展的数值传递</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>propsData 扩展的数值传递</h1>
+    <hr>
+    <div id="app">
+        <h5></h5>
+    </div>
+
+    <script type="text/javascript">
+        var myheader = Vue.extend({
+            template:`<h3>这是{{name}}的头部--{{num}}</h3>`,
+            data:function() {
+                return {
+                    name:'yuan'
+                }
+            },
+            props:['num']
+        });
+        new Vue({
+            el: '#app',
+        });
+        new myheader({
+            propsData:{
+                'num':5
+            }
+        }).$mount('h5')
+    </script>
+</body>
+</html>
