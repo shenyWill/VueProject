@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>mixin 混入</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>mixin 混入</h1>
+    <hr>
+    <div id="app">
+        {{num}}
+        <p>
+            <button @click="add">add</button>
+        </p>
+    </div>
+
+    <script type="text/javascript">
+        /* 定义的混入方法会在全局混入方法之后，原生方法之前 */
+        var updatedMixin = {
+            updated: function() {
+                console.log('定义的混入updeta方法')
+            }
+        }
+
+        /* 全局混入方法最先被加载 */
+        Vue.mixin({
+            updated:function() {
+                console.log('全局的混入方法')
+            }
+        })
+        var app = new Vue({
+            el: '#app',
+            data: {
+                'num': 1
+            },
+            methods: {
+                'add': function() {
+                    this.num ++;
+                }
+            },
+            updated: function() {
+                console.log('原先的updated方法');
+            },
+            mixins:[updatedMixin]
+
+        })
+    </script>
+</body>
+</html>

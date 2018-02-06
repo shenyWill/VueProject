@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>methods 选项属性</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>methods 选项属性</h1>
+    <hr>
+    <div id="app">
+        <p>{{num}}</p>
+        <div>
+            <button @click="add(2,$event)">add</button>
+            <btn  @click.native="add(2,$event)"></btn>
+        </div>
+        <button onclick="app.add(2,MouseEvent)">外部add</button>
+    </div>
+
+    <script type="text/javascript">
+        var app = new Vue({
+            el: '#app',
+            data: {
+                num: 1
+            },
+            components:{
+                'btn':{
+                    template:`<button>组件add</button>`
+                }
+            },
+            methods: {
+                add:function(number,event) {
+                    console.log(event); //相当于原生的MouseEvent
+                    this.num += number;
+                }
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>watch 监听</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+
+<body>
+    <h1>watch 监听</h1>
+    <hr>
+    <div id="app">
+        <p>现在的温度：{{newWendu}}</p>
+        <p>适合的衣服：{{yifu}}</p>
+        <p>
+            <button @click="add">增加温度</button>
+            <button @click="deletes">减少温度</button>
+        </p>
+    </div>
+
+    <script type="text/javascript">
+        var yifuArr = ['暖和的棉袄', '帅气的衬衣', '凉爽的短袖'];
+        var app = new Vue({
+            el: '#app',
+            data: {
+                'wendu': 10,
+                'yifu': '帅气的衬衣'
+            },
+            computed: {
+                'newWendu': function () {
+                    return this.wendu + '℃'
+                }
+            },
+            methods: {
+                'add': function () {
+                    this.wendu += 5;
+                },
+                'deletes': function () {
+                    this.wendu -= 5;
+                }
+            },
+            /*第一种监听方式*/
+            // watch: {
+            //     'wendu': function (newVal, oldVal) {
+            //         if (newVal > 18) {
+            //             this.yifu = yifuArr[2]
+            //         } else if (newVal <= 18 && newVal > 0) {
+            //             this.yifu = yifuArr[1]
+            //         } else {
+            //             this.yifu = yifuArr[0]
+            //         }
+            //     }
+            // }
+        });
+        /*第二种监听方式*/
+        app.$watch('wendu', function (newVal, oldVal) {
+            if (newVal > 18) {
+                this.yifu = yifuArr[2]
+            } else if (newVal <= 18 && newVal > 0) {
+                this.yifu = yifuArr[1]
+            } else {
+                this.yifu = yifuArr[0]
+            }
+        })
+    </script>
+</body>
+
+</html>
