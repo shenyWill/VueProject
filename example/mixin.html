@@ -22,6 +22,13 @@
         var updatedMixin = {
             updated: function() {
                 console.log('定义的混入updeta方法')
+            },
+            methods: {
+                /* 和扩展一样，如果构造器的methods里面有这个方法，这个方法就不会起作用 */
+                'add' : function() {
+                    this.num ++;
+                    console.log('定义的混入的add方法')
+                }
             }
         }
 
@@ -37,9 +44,9 @@
                 'num': 1
             },
             methods: {
-                'add': function() {
-                    this.num ++;
-                }
+                // 'add': function() {
+                //     this.num ++;
+                // }
             },
             updated: function() {
                 console.log('原先的updated方法');

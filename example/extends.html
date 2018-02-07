@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>extends 扩展</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>extends 扩展</h1>
+    <hr>
+    <div id="app">
+        {{num}}
+        <p>
+            <button @click="add">add</button>
+        </p>
+    </div>
+
+    <script type="text/javascript">
+        var extendsObj = {
+            updated : function() {
+                console.log('扩展的updeated方法')
+            },
+            /* 当构造器里的methods里面存在这个方法的时候，这个方法并不会起作用 --要记住*/
+            methods:{
+                'add' : function() {
+                    console.log('扩展的ADD方法');
+                }
+            }
+        }
+
+        var app = new Vue({
+            el: '#app',
+            data: {
+                'num' : 1
+            },
+            methods: {
+                'add' : function() {
+                    console.log('原生的ADD方法');
+                    this.num++;
+                }
+            },
+            updated:function() {
+                console.log('原生的updated方法');
+            },
+            extends:extendsObj
+        })
+    </script>
+</body>
+</html>
