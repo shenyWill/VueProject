@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue的实例事件</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+
+<body>
+    <h1>Vue的实例事件</h1>
+    <hr>
+    <div id="app">
+        <p>数量：{{num}}</p>
+        <p>
+            <button @click="add">add</button>
+        </p>
+        <p>
+            <button onclick="reduce()">reduce</button>
+        </p>
+        <p>
+            <button onclick="reduceOnce()">reduceOnce</button>
+        </p>
+        <p>
+            <button onclick="off()">off</button>
+        </p>
+        <p>
+            <button onclick="nativeReduce()">nativeReduce</button>
+        </p>
+    </div>
+    
+
+
+    <script type="text/javascript">
+        var app = new Vue({
+            el: '#app',
+            data: {
+                num: 10
+            },
+            methods: {
+                'add': function () {
+                    this.num++;
+                }
+            }
+        });
+        app.$on('reduce',function() {
+            this.num--;
+        });
+        app.$once('reduceOnce',function() {
+            console.log('只执行一次');
+            this.num--;
+        })
+        function reduce() {
+            app.$emit('reduce');
+        }
+        function reduceOnce() {
+            app.$emit('reduceOnce');
+        }
+        function off() {
+            app.$off('reduce')
+        }
+        function nativeReduce() {
+            app.num --;
+        }
+    </script>
+</body>
+
+</html>

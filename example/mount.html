@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue的$mount,$destroy,$forceUpdate,$nextTick等方法</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>Vue的$mount,$destroy,$forceUpdate,$nextTick等方法</h1>
+    <hr>
+    <div id="app"></div>
+    <p>
+        <button onclick="destroy()">销毁</button>
+        <button onclick="update()">更新</button>
+    </p>
+
+    <script type="text/javascript">
+        var app = Vue.extend({
+            template:`<p>{{message}}</p>`,
+            data: function() {
+                return {
+                    'message': 'Vue的$mount,$destory,$forceUpdate,$nextTick等方法'
+                }
+            },
+            destroyed:function() {
+                console.log('销毁')
+            },
+            updated: function() {
+                console.log('更新')
+            }
+        });
+        var vm = new app();
+        vm.$mount('#app');
+        function destroy() {
+            vm.$destroy();
+        }
+        function update() {
+            vm.message = '更新后的数据';
+            vm.$forceUpdate()
+        }
+    </script>
+</body>
+</html>
