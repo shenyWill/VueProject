@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- key可以使得两个元素是完全独立的，不会复用他们 -->
+        <template v-if="loginType === 'username'" >
+            <label>Username</label><br>
+            <input type="text" placeholder="enter your Username" key="username">
+        </template>
+        
+        <template v-if="loginType === 'email'">
+            <label>Email</label><br>
+            <input type="text" placeholder="enter your Email" key="email">
+        </template>
+
+        <button @click="loginType === 'email' ? loginType='username' : loginType='email'">点击</button>
+    </div>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                loginType: 'username'
+            }
+        })
+    </script>
+</body>
+</html>

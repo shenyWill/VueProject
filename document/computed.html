@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <p>名：{{firstName}}</p>
+        <p>姓：{{lastName}}</p>
+        <p>姓名：{{fullName}}</p>
+    </div>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                firstName: 'shen',
+                lastName: 'yuan'
+            },
+            computed: {
+                fullName: {
+                    get: function () {
+                        return this.firstName + ' ' + this.lastName
+                    },
+                    set: function(val) {
+                        console.log(val)
+                        let nameArr = val.split(' ');
+                        this.firstName = nameArr[0]
+                        this.lastName = nameArr[nameArr.length -1]
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+</html>

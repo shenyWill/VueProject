@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <div class="box">
+        <input type="text" v-model="listValue">
+        <button @click="pushValue">加入</button>
+        <ul>
+            <list-item v-for="(item,index) in list" :content="item" :index='index' @delete="deleteListItem"></list-item>
+        </ul>
+    </div>
+    <script>
+        var listItem = {
+            props:['content','index'],
+            template:'<li @click="deleteItem">{{content}}</li>',
+            methods:{
+                deleteItem:function(){
+                    this.$emit('delete',this.index);
+                }
+            }
+        }
+        var app = new Vue({
+            el:'.box',
+            data:{
+                listValue:'',
+                list:[]
+            },
+            methods:{
+                pushValue:function(){
+                    this.list.push(this.listValue);
+                    this.listValue = '';
+                },
+                deleteListItem:function(index){
+                    this.list.splice(index,1);
+                }
+            },
+            components:{
+                listItem:listItem
+            }
+        })
+    </script>
+</body>
+</html>

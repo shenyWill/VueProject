@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .circleA {
+            width: 200px;
+            height: 200px;
+            margin: 50px auto;
+            position: relative;
+            border: 1px solid #ddd;
+        }
+
+        .wrapper {
+            width: 100px;
+            height: 200px;
+            position: absolute;
+            top: 0;
+            overflow: hidden;
+        }
+        .left {
+            left: 0;
+        }
+        .right {
+            right: 0;
+        }
+        .circleAll {
+            width: 160px;
+            height: 160px;
+            border: 20px solid transparent;
+            border-radius: 50%;
+            position: absolute;
+            top: 0;
+            transform: rotate(45deg)
+        }
+
+        .circler {
+            border-top: spx solid green;
+            border-right: 20px solid green;
+            right: 0;
+        }
+
+        .circlel {
+            border-bottom: 20px solid green;
+            border-left: 20px solid green;
+            left: 0;
+            transform: rotate(30deg)
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="circleA">
+        <div class="wrapper right">
+            <div class="circleAll circler"></div>
+        </div>
+        <div class="wrapper left">
+            <div class="circleAll circlel"></div>
+        </div>
+    </div>
+</body>
+
+</html>

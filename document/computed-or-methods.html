@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <p>计算属性的值：{{cnow}}</p>
+        <p>方法返回的值： {{mnow()}}</p>
+        <p>监听随机数：{{watchTime}}</p>
+        <p>监听方法：{{watchTimes()}}</p>
+        <button @click="mnow">点击变化方法</button>
+        <button @click="nnow">点击变化属性</button>
+    </div>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                nowDate: new Date()
+            },
+            computed: {
+                cnow: function () {
+                    return this.nowDate
+                },
+                watchTime: function() {
+                    return Math.random()
+                }
+            },
+            methods: {
+                mnow: function () {
+                    return Date.now()
+                },
+                nnow: function () {
+                    this.nowDate = Date.now();
+                },
+                watchTimes: function() {
+                    console.log(new Date())
+                    return Math.random()
+                }
+
+            }
+        })
+    </script>
+</body>
+
+</html>
