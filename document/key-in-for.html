@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="item in list" :key="item">{{item}}</li>
+        </ul>
+        <button @click="changeList">改变</button>
+    </div>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                list: [1,2,3]
+            },
+            methods: {
+                changeList: function() {
+                    // this.list[1] = 'hello'
+                    // this.list.splice(0,1,'hello')
+                    // Vue.set(this.list,0,'hello')
+                    this.$set(this.list,0,'hello')
+                }
+            }
+        })
+    </script>
+</body>
+</html>

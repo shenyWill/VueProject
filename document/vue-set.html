@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <p>数组：{{list}}</p>
+        <p>对象：{{object}}</p>
+        <button @click="changeList">改变数组</button>
+        <button @click="changeObject">改变对象</button>
+    </div>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                list: [1,2,3],
+                object: {
+                    name: 'shenyuan',
+                    age: 26
+                }
+            },
+            methods: {
+                changeObject: function(){
+                    // this.object.sex = 'hahha'   // 由于JavaScript的原因，Vue 不能检测对象属性的添加或删除
+                    // delete this.object.name
+
+                    Vue.set(this.object,'sex','haha')   // 使用Vue.set()可以为对象添加属性
+                    Vue.set(this.object,'age')  // 这样可以删除age属性
+                },
+                changeList: function(){
+                    Vue.set(this.list,0,999)
+                }
+            }
+        })
+    </script>
+</body>
+</html>
